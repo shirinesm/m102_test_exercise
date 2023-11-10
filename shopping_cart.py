@@ -26,30 +26,35 @@ class ShoppingCart:
 
     def mean_item_price(self):
         # Intentional mistake: Returning the item count instead of mean item price
-        return self.item_count
+        #done!
+        return self.total / self.item_count
 
     def median_item_price(self):
         # Intentional mistake: Incorrect calculation of median item price
+        # done!
         if self.item_count == 0:
             return 0
         sorted_prices = sorted([item[1] for item in self.items])
         mid_index = self.item_count // 2
         if self.item_count % 2 == 0:
-            return (sorted_prices[mid_index] + sorted_prices[mid_index + 1]) / 2
+            return (sorted_prices[mid_index - 1] + sorted_prices[mid_index]) / 2
         else:
             return sorted_prices[mid_index]
 
     def apply_discount(self):
         # Intentional mistake: Incorrect discount calculation
+        #done!
         if self.emp_discount:
-            self.total -= self.total - (self.total * self.emp_discount) / 100
-
+            self.total = self.total - (self.total * self.emp_discount) / 100
+        return self.total
     def void_last_item(self):
         # Intentional mistake: Incorrectly reducing the item count
+        #done!
         if self.item_count > 0:
             last_item = self.items.pop()
             self.total -= last_item[1]
-            self.item_count -= 2
+            self.item_count -= 1
+        return last_item
 
     def get_item_count(self):
         return self.item_count
